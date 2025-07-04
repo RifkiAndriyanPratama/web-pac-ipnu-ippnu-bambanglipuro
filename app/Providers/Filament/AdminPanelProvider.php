@@ -20,6 +20,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Filament\Widgets\JumlahAnggota;
 use App\Filament\Widgets\StatistikPotensi;
+use App\Filament\Widgets\JumlahPengurus;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -32,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogoHeight('3rem')
             ->id('admin')
             ->path('admin')
+            ->profile(isSimple:false)
             ->login()
             ->colors([
                 'danger' => Color::Rose,
@@ -47,12 +49,13 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
-            ->widgets([
-                // Widgets\AccountWidget::class,
-                // Widgets\FilamentInfoWidget::class,
-                JumlahAnggota::class,
-                StatistikPotensi::class
-            ])
+            // ->widgets([
+            //     // Widgets\AccountWidget::class,
+            //     // Widgets\FilamentInfoWidget::class,
+            //     JumlahAnggota::class,
+            //     JumlahPengurus::class,
+            //     StatistikPotensi::class
+            // ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

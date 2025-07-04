@@ -20,9 +20,12 @@ class AnggotaResource extends Resource
 {
     protected static ?string $model = Anggota::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $pluralModelLabel = 'Anggota';
     protected static ?string $navigationLabel = 'Anggota';
+    protected static ?string $navigationGroup = 'Manajemen Anggota';
+
+
 
     public static function form(Form $form): Form
     {
