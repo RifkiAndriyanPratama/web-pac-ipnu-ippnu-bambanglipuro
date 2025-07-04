@@ -31,6 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('PAC Mbali')
             ->brandLogo(asset('images/logo/pacipnuippnumbali.png'))
             ->brandLogoHeight('3rem')
+            ->darkMode(false)
             ->id('admin')
             ->path('admin')
             ->profile(isSimple:false)
@@ -49,13 +50,6 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
-            // ->widgets([
-            //     // Widgets\AccountWidget::class,
-            //     // Widgets\FilamentInfoWidget::class,
-            //     JumlahAnggota::class,
-            //     JumlahPengurus::class,
-            //     StatistikPotensi::class
-            // ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
