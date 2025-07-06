@@ -15,12 +15,14 @@ class OverviewStats extends BaseWidget
             Stat::make('Jumlah Anggota', Anggota::count())
                 ->description('Total anggota saat ini')
                 ->icon('heroicon-o-users')
-                ->color('success'),
+                ->color('success')
+                ->url(route('filament.admin.resources.anggotas.index')),
 
             Stat::make('Jumlah Pengurus', Pengurus::count())
                 ->description('Total pengurus saat ini')
                 ->icon('heroicon-o-user-group')
-                ->color('primary'),
+                ->color('primary')
+                ->url(route('filament.admin.resources.penguruses.index'))
         ];
     }
 }
