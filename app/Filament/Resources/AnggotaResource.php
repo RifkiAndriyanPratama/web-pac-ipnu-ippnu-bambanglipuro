@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\FileUpload;
 use PhpParser\Node\Stmt\Label;
 use App\Enums\PotensiAnggota;
+use Filament\Tables\Filters\SelectFilter;
+
 
 class AnggotaResource extends Resource
 {
@@ -25,11 +27,10 @@ class AnggotaResource extends Resource
     protected static ?string $navigationLabel = 'Anggota';
     protected static ?string $navigationGroup = 'Manajemen Anggota';
 
-
-
     public static function form(Form $form): Form
     {
-        return $form->schema([
+        return $form
+        ->schema([
             Forms\Components\TextInput::make('nama')->required(),
             Forms\Components\TextInput::make('alamat')->required(),
             Forms\Components\TextInput::make('no_hp')
@@ -53,15 +54,21 @@ class AnggotaResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([
+        return $table
+        ->columns([
             Tables\Columns\TextColumn::make('nama')->searchable(),
             Tables\Columns\TextColumn::make('alamat'),
             Tables\Columns\TextColumn::make('no_hp'),
-            Tables\Columns\TextColumn::make('potensi'),
             Tables\Columns\TextColumn::make('potensi')
-            ->label('Potensi')
-            ->formatStateUsing(fn ($state) => $state?->label()),
+                ->label('Potensi')
+                ->formatStateUsing(fn ($state) => $state?->label()),
             Tables\Columns\ImageColumn::make('foto')->disk('public'),
+        ])
+        ->filters([
+            SelectFilter::make('potensi')
+                ->label('Filter Potensi')
+                ->options(PotensiAnggota::options())
+                ->attribute('potensi'), // filter berdasarkan kolom 'potensi'
         ]);
     }
 
