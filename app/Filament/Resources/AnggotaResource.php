@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AnggotaResource\Pages;
 use App\Filament\Resources\AnggotaResource\RelationManagers;
 use App\Models\Anggota;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,12 +17,14 @@ use Filament\Forms\Components\FileUpload;
 use PhpParser\Node\Stmt\Label;
 use App\Enums\PotensiAnggota;
 use Filament\Tables\Filters\SelectFilter;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
+use pxlrbt\FilamentExcel\Columns\Column;
 
 
 class AnggotaResource extends Resource
 {
     protected static ?string $model = Anggota::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $pluralModelLabel = 'Anggota';
     protected static ?string $navigationLabel = 'Anggota';
@@ -56,7 +59,11 @@ class AnggotaResource extends Resource
     {
         return $table
         ->columns([
-            Tables\Columns\TextColumn::make('nama')->searchable(),
+            Tables\Columns\TextColumn::make('no')
+            ->label('No.')
+            ->rowIndex(),
+            Tables\Columns\TextColumn::make('nama')
+            ->searchable(),
             Tables\Columns\TextColumn::make('alamat'),
             Tables\Columns\TextColumn::make('no_hp'),
             Tables\Columns\TextColumn::make('potensi')
@@ -69,6 +76,26 @@ class AnggotaResource extends Resource
                 ->label('Filter Potensi')
                 ->options(PotensiAnggota::options())
                 ->attribute('potensi'), // filter berdasarkan kolom 'potensi'
+        ])
+        ->actions([])
+        ->headerActions([
+        ExportAction::make('export')
+        ->label('Export Data Anggota')
+        ->exports([
+            ExcelExport::make()
+                ->fromTable()
+                ->withFilename('data-anggota-pac-mbali.xlsx')
+                ->withColumns([
+            Column::make('no')
+                ->heading('No.')
+                ->formatStateUsing(fn ($record, $rowIndex) => $rowIndex + 1),
+                    Column::make('nama')->heading('Nama'),
+                    Column::make('alamat')->heading('Alamat'),
+                    Column::make('no_hp')->heading('No HP'),
+                    Column::make('potensi')
+                        ->heading('Potensi')
+                ]),
+        ])
         ]);
     }
 
