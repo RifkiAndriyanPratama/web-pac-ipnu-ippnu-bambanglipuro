@@ -28,9 +28,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->brandName('PAC Mbali')
-            ->brandLogo(asset('images/logo/pacipnuippnumbali.png'))
-            ->brandLogoHeight('3rem')
+            ->brandName('Sekretariatan Digital')
             ->darkMode(false)
             ->id('admin')
             ->path('admin')
