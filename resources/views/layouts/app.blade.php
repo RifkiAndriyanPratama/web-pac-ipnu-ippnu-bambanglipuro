@@ -15,8 +15,11 @@
     <main>
         @yield('content')
     </main>
+    {{-- Komponen footer --}}
+    <x-footer />
 <script>
   AOS.init();
 </script>
+  @stack('scripts')
 </body>
 </html>

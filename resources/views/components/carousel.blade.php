@@ -1,11 +1,33 @@
 @php
     $slides = [
-        ['img' => 'carousel-1.jpg', 'title' => 'Selamat Datang', 'desc' => 'Ini adalah halaman utama'],
-        ['img' => 'carousel-2.jpg', 'title' => 'Proyek Kami', 'desc' => 'Kami bangga dengan desain inovatif kami'],
-        ['img' => 'carousel-3.jpg', 'title' => 'Tim Profesional', 'desc' => 'Dipimpin oleh arsitek berpengalaman'],
-        ['img' => 'carousel-4.jpg', 'title' => 'Konsultasi Gratis', 'desc' => 'Hubungi kami untuk diskusi proyek'],
-        ['img' => 'carousel-5.jpg', 'title' => 'Bangun Impian Anda', 'desc' => 'Kami siap mewujudkan visi Anda'],
-    ];
+    [
+        'img' => 'carousel-1.jpg',
+        'title' => 'PAC IPNU IPPNU Bambanglipuro',
+        'desc' => 'Pelajar NU: Belajar, Berjuang, Bertaqwa'
+    ],
+    [
+        'img' => 'carousel-2.jpg',
+        'title' => 'Bersama Membangun Generasi',
+        'desc' => 'Aktif Mengabdi, Kreatif Berkarya'
+    ],
+    [
+        'img' => 'carousel-3.jpg',
+        'title' => 'Literasi dan Digitalisasi Pelajar',
+        'desc' => 'Cerdas Bermedia, Berlandaskan Akhlak'
+    ],
+    [
+        'img' => 'carousel-4.jpg',
+        'title' => 'Solid Bergerak',
+        'desc' => 'Bersatu dalam Ukhuwah, Bergerak untuk Umat'
+    ],
+    [
+        'img' => 'carousel-5.jpg',
+        'title' => 'Kaderisasi Berkelanjutan',
+        'desc' => 'Membentuk Kader Tangguh & Berakhlak'
+    ],
+];
+
+
 @endphp
 
 <div x-data="carousel()" x-init="start()" class="relative w-full h-screen overflow-hidden">
@@ -44,8 +66,8 @@
     </div>
 
     <!-- Controls -->
-    <button @click="prev" class="absolute top-1/2 left-0 transform -translate-y-1/2 z-30 p-4 text-white bg-black/30 hover:bg-black/50">&#10094;</button>
-    <button @click="next" class="absolute top-1/2 right-0 transform -translate-y-1/2 z-30 p-4 text-white bg-black/30 hover:bg-black/50">&#10095;</button>
+    <button @click="prev" class="absolute top-1/2 left-0 transform -translate-y-1/2 z-30 p-4 text-white bg-black/30 hover:bg-black/50 hover:cursor-pointer">&#10094;</button>
+    <button @click="next" class="absolute top-1/2 right-0 transform -translate-y-1/2 z-30 p-4 text-white bg-black/30 hover:bg-black/50 hover:cursor-pointer">&#10095;</button>
 </div>
 
 <script>
