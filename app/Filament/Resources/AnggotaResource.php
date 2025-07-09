@@ -47,7 +47,8 @@ class AnggotaResource extends Resource
             Forms\Components\DatePicker::make('tanggal_lahir')->required(),
             Forms\Components\FileUpload::make('foto')
             ->directory('anggota-foto')
-            ->visibility('public'),
+            ->visibility('public')
+            ->label('Foto (Maksimal 2MB)'),
             Forms\Components\Select::make('potensi')
             ->label('Potensi')
             ->options(PotensiAnggota::options())
@@ -56,14 +57,14 @@ class AnggotaResource extends Resource
     }
 
     public static function table(Table $table): Table
-    {
-        return $table
+{
+    return $table
         ->columns([
             Tables\Columns\TextColumn::make('no')
-            ->label('No.')
-            ->rowIndex(),
+                ->label('No.')
+                ->rowIndex(),
             Tables\Columns\TextColumn::make('nama')
-            ->searchable(),
+                ->searchable(),
             Tables\Columns\TextColumn::make('alamat'),
             Tables\Columns\TextColumn::make('no_hp'),
             Tables\Columns\TextColumn::make('potensi')
@@ -75,29 +76,32 @@ class AnggotaResource extends Resource
             SelectFilter::make('potensi')
                 ->label('Filter Potensi')
                 ->options(PotensiAnggota::options())
-                ->attribute('potensi'), // filter berdasarkan kolom 'potensi'
+                ->attribute('potensi'),
         ])
-        ->actions([])
+        ->actions([
+            Tables\Actions\ViewAction::make(),
+            Tables\Actions\EditAction::make(),
+            Tables\Actions\DeleteAction::make(),
+        ])
         ->headerActions([
-        ExportAction::make('export')
-        ->label('Export Data Anggota')
-        ->exports([
-            ExcelExport::make()
-                ->fromTable()
-                ->withFilename('data-anggota-pac-mbali.xlsx')
-                ->withColumns([
-            Column::make('no')
-                ->heading('No.')
-                ->formatStateUsing(fn ($record, $rowIndex) => $rowIndex + 1),
-                    Column::make('nama')->heading('Nama'),
-                    Column::make('alamat')->heading('Alamat'),
-                    Column::make('no_hp')->heading('No HP'),
-                    Column::make('potensi')
-                        ->heading('Potensi')
-                ]),
-        ])
+            ExportAction::make('export')
+                ->label('Export Data Anggota')
+                ->exports([
+                    ExcelExport::make()
+                        ->fromTable()
+                        ->withFilename('data-anggota-pac-mbali.xlsx')
+                        ->withColumns([
+                            Column::make('no')
+                                ->heading('No.')
+                                ->formatStateUsing(fn ($record, $rowIndex) => $rowIndex + 1),
+                            Column::make('nama')->heading('Nama'),
+                            Column::make('alamat')->heading('Alamat'),
+                            Column::make('no_hp')->heading('No HP'),
+                            Column::make('potensi')->heading('Potensi'),
+                        ]),
+                ])
         ]);
-    }
+}
 
     public static function getRelations(): array
     {
