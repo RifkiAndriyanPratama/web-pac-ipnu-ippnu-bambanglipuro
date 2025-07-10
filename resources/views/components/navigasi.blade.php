@@ -1,9 +1,5 @@
-@props(['isHome' => true])
-
 <nav id="navbar"
-    data-is-home="{{ $isHome ? 'true' : 'false' }}"
-    class="fixed w-full z-50 transition-all duration-300
-           {{ $isHome ? 'bg-transparent text-white' : 'bg-white text-green-600 shadow-md' }}">
+    class="fixed w-full z-50 transition-all duration-300 bg-white text-green-600 shadow-md">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2.5">
     <a href="/" class="flex items-center space-x-3">
         <img src="{{ asset('images/logo/pacipnuippnumbali.png') }}" class="h-8" alt="Logo" />
@@ -11,8 +7,7 @@
     </a>
 
     <button data-collapse-toggle="navbar-dropdown" type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm 
-             {{ $isHome ? 'text-white' : 'text-green-700' }}
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-green-700
              rounded-lg md:hidden"
       aria-controls="navbar-dropdown" aria-expanded="false">
         <svg class="w-5 h-5" fill="none" stroke="currentColor"
@@ -24,7 +19,7 @@
 
     <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
       <ul id="navbar-list" class="flex flex-col md:flex-row md:space-x-8 font-semibold 
-                 {{ $isHome ? 'md:text-white' : 'md:text-green-600' }}
+                 md:text-green-600
                  bg-white md:bg-transparent text-gray-800 
                  p-4 md:p-0 mt-4 md:mt-0 
                  rounded-lg md:rounded-none 
@@ -42,7 +37,4 @@
       </ul>
     </div>
   </div>
-
-  {{-- Debug --}}
-  <div class="hidden">IS HOME: {{ $isHome ? 'true' : 'false' }}</div>
 </nav>

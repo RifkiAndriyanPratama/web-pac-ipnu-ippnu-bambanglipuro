@@ -3,6 +3,6 @@
 @section('title', 'Pelajar Bambanglipuro - About')
 
 @section('content')
-    <x-navbar />
+    <x-navigasi />
     <x-about />
 @endsection
