@@ -9,33 +9,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const navbarList = document.getElementById("navbar-list");
     const hamburger = document.querySelector("[data-collapse-toggle]");
 
+    const isHomePage = navbar?.dataset.isHome === 'true';
+
+    if (!navbar || !isHomePage) return;
+
     const toggleNavbarStyle = () => {
-      if (window.scrollY > 10) {
-        navbar.classList.remove("bg-transparent", "text-white");
-        navbar.classList.add("bg-white", "text-green-600", "shadow-md");
+        if (window.scrollY > 10) {
+            navbar.classList.remove("bg-transparent", "text-white");
+            navbar.classList.add("bg-white", "text-green-600", "shadow-md");
 
-        // Ganti warna text nav desktop
-        navbarList.classList.remove("md:text-white");
-        navbarList.classList.add("md:text-green-600");
+            navbarList?.classList.remove("md:text-white");
+            navbarList?.classList.add("md:text-green-600");
 
-        // Ganti icon hamburger
-        hamburger.classList.remove("text-white");
-        hamburger.classList.add("text-green-700");
-      } else {
-        navbar.classList.remove("bg-white", "text-green-600", "shadow-md");
-        navbar.classList.add("bg-transparent", "text-white");
+            hamburger?.classList.remove("text-white");
+            hamburger?.classList.add("text-green-700");
+        } else {
+            navbar.classList.remove("bg-white", "text-green-600", "shadow-md");
+            navbar.classList.add("bg-transparent", "text-white");
 
-        navbarList.classList.remove("md:text-green-600");
-        navbarList.classList.add("md:text-white");
+            navbarList?.classList.remove("md:text-green-600");
+            navbarList?.classList.add("md:text-white");
 
-        hamburger.classList.remove("text-green-700");
-        hamburger.classList.add("text-white");
-      }
+            hamburger?.classList.remove("text-green-700");
+            hamburger?.classList.add("text-white");
+        }
     };
 
     window.addEventListener("scroll", toggleNavbarStyle);
-    toggleNavbarStyle(); // trigger langsung saat load
-  });
+    toggleNavbarStyle();
+});
+
+
 
 
 

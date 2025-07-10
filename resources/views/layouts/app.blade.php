@@ -7,10 +7,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-white text-gray-900 font-sans">
-
-    {{-- Komponen Navbar --}}
-    <x-navbar />
-
     {{-- Konten halaman --}}
     <main>
         @yield('content')

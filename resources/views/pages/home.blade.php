@@ -2,6 +2,7 @@
     $periode = '2024 - 2026';
     $jumlahAnggota = \App\Models\Anggota::count();
     $jumlahPengurus = \App\Models\Pengurus::count();
+    $isHome = true;
 @endphp
 
 @extends('layouts.app')
@@ -9,6 +10,7 @@
 @section('title', 'Pelajar Bambanglipuro - Home')
 
 @section('content')
+    <x-navbar :is-home="true" />
     <x-carousel />
 
     {{-- Section Sambutan --}}
