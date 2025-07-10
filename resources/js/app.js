@@ -4,30 +4,39 @@ window.Alpine = Alpine;
 Alpine.start();
 import "flowbite";
 
-// Navbar scroll
 document.addEventListener("DOMContentLoaded", () => {
-  const navbar = document.getElementById("navbar");
-  const hamburger = document.querySelector("[data-collapse-toggle]");
+    const navbar = document.getElementById("navbar");
+    const navbarList = document.getElementById("navbar-list");
+    const hamburger = document.querySelector("[data-collapse-toggle]");
 
-  const toggleNavbarStyle = () => {
-    if (window.scrollY > 10) {
-      navbar.classList.remove("bg-transparent", "text-white");
-      navbar.classList.add("bg-white", "text-green-600", "shadow-md");
+    const toggleNavbarStyle = () => {
+      if (window.scrollY > 10) {
+        navbar.classList.remove("bg-transparent", "text-white");
+        navbar.classList.add("bg-white", "text-green-600", "shadow-md");
 
-      // Ganti warna hamburger button
-      hamburger.classList.remove("text-white");
-      hamburger.classList.add("text-green-700");
-    } else {
-      navbar.classList.remove("bg-white", "text-green-600", "shadow-md");
-      navbar.classList.add("bg-transparent", "text-white");
+        // Ganti warna text nav desktop
+        navbarList.classList.remove("md:text-white");
+        navbarList.classList.add("md:text-green-600");
 
-      hamburger.classList.remove("text-green-700");
-      hamburger.classList.add("text-white");
-    }
-  };
+        // Ganti icon hamburger
+        hamburger.classList.remove("text-white");
+        hamburger.classList.add("text-green-700");
+      } else {
+        navbar.classList.remove("bg-white", "text-green-600", "shadow-md");
+        navbar.classList.add("bg-transparent", "text-white");
 
-  window.addEventListener("scroll", toggleNavbarStyle);
-});
+        navbarList.classList.remove("md:text-green-600");
+        navbarList.classList.add("md:text-white");
+
+        hamburger.classList.remove("text-green-700");
+        hamburger.classList.add("text-white");
+      }
+    };
+
+    window.addEventListener("scroll", toggleNavbarStyle);
+    toggleNavbarStyle(); // trigger langsung saat load
+  });
+
 
 
 
