@@ -1,8 +1,8 @@
 @props(['news', 'categories'])
 
 <section class="bg-white py-16 px-4 md:px-8">
-    <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Blog</h2>
+    <div class="max-w-7xl mx-auto mt-10">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">Berita</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             {{-- Bagian Berita --}}
@@ -29,8 +29,10 @@
                                 </span>
                             @endif
 
-                            <h3 class="text-xl font-semibold text-gray-900 leading-snug mb-1">
+                            <h3 class="text-xl font-semibold leading-snug mb-1">
+                            <a href="{{ route('news.detail', $item->slug) }}" class="text-gray-900 hover:text-green-700 transition-colors">
                                 {{ $item->title }}
+                            </a>
                             </h3>
 
                             <p class="text-sm text-gray-700 mb-4 line-clamp-2">
@@ -52,24 +54,23 @@
 
             {{-- Sidebar Kategori --}}
             <aside class="space-y-4 border-l border-gray-200 pl-6">
-    <h3 class="text-xl font-semibold text-gray-800 mb-2">Kategori</h3>
-    <ul class="space-y-2">
-        @forelse ($categories as $category)
-            <li>
-                <a href="#"
-                   class="flex items-center justify-between text-sm font-medium text-gray-700 hover:text-green-600">
-                    {{ $category->name }}
-                    <span class="text-xs bg-gray-200 text-gray-700 px-2 py-0.5 rounded">
-                        {{ $category->news_count ?? 0 }}
-                    </span>
-                </a>
-            </li>
-        @empty
-            <li class="text-gray-500 text-sm">Belum ada kategori.</li>
-        @endforelse
-    </ul>
-</aside>
-
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Kategori</h3>
+                <ul class="space-y-2">
+                    @forelse ($categories as $category)
+                        <li>
+                            <a href="#"
+                               class="flex items-center justify-between text-sm font-medium text-gray-700 hover:text-green-600">
+                                {{ $category->name }}
+                                <span class="text-xs bg-gray-200 text-gray-700 px-2 py-0.5 rounded">
+                                    {{ $category->news_count ?? 0 }}
+                                </span>
+                            </a>
+                        </li>
+                    @empty
+                        <li class="text-gray-500 text-sm">Belum ada kategori.</li>
+                    @endforelse
+                </ul>
+            </aside>
         </div>
     </div>
 </section>

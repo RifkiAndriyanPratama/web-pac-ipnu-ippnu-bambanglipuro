@@ -32,8 +32,13 @@ Route::get('/news', function () {
 })->name('news');
 
 Route::get('/news/{slug}', function ($slug) {
-    $news = News::where('slug', $slug)->with('newsCategory')->firstOrFail();
-    return view('pages.news-detail', [
-        'news' => $news
-    ]);
+    $news = \App\Models\News::where('slug', $slug)->with('newsCategory')->firstOrFail();
+
+    $otherNews = \App\Models\News::where('id', '!=', $news->id)
+        ->latest('published_at')
+        ->take(3)
+        ->get();
+
+    return view('pages.news-detail', compact('news', 'otherNews'));
 })->name('news.detail');
+

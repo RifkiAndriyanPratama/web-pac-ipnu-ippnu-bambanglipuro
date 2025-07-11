@@ -4,5 +4,5 @@
 
 @section('content')
     <x-navigasi />
-    <x-news-detail :news="$news"/>
+    <x-news-detail :news="$news" :otherNews="$otherNews"/>
 @endsection
