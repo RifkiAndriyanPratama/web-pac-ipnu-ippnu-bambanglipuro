@@ -30,7 +30,7 @@
                  rounded-lg md:rounded-none 
                  shadow md:shadow-none transition-colors duration-300">
 
-        @foreach (['Home' => '/', 'Program' => '/program', 'About' => '/about', 'News' => '#', 'Sekretariatan Digital' => '/admin'] as $label => $url)
+        @foreach (['Home' => '/', 'Program' => '/program', 'About' => '/about', 'News' => '/news', 'Sekretariatan Digital' => '/admin'] as $label => $url)
             <li>
                 <a href="{{ $url }}" class="block relative py-2 px-4 group hover:text-green-500 transition-colors duration-300">
                     {{ $label }}

@@ -27,10 +27,10 @@ class NewsResource extends Resource
                 ->required()
                 ->maxLength(255),
 
-            Forms\Components\Textarea::make('content')
-                ->label('Isi Berita')
-                ->rows(10)
-                ->required(),
+            Forms\Components\RichEditor::make('content')
+    ->label('Isi Berita')
+    ->toolbarButtons(['bold', 'italic', 'bulletList', 'orderedList', 'link', 'h2', 'h3'])
+    ->required(),
 
             Forms\Components\FileUpload::make('thumbnail')
     ->image()
