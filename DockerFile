@@ -1,0 +1,23 @@
+# Gunakan image Laravel resmi
+FROM laravelsail/php83-composer:latest
+
+# Atur working directory
+WORKDIR /var/www
+
+# Salin semua file project ke container
+COPY . .
+
+# Install dependency
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Copy file .env.example jika .env tidak ada (opsional)
+RUN cp .env.example .env
+
+# Generate app key
+RUN php artisan key:generate
+
+# Jalankan migration (jika kamu ingin otomatis)
+# RUN php artisan migrate --force
+
+# Jalankan server Laravel
+CMD php artisan serve --host=0.0.0.0 --port=8000
