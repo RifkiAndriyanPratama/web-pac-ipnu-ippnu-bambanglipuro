@@ -1,7 +1,7 @@
 @props(['news', 'categories'])
 
 <section class="bg-white py-16 px-4 md:px-8">
-    <div class="max-w-7xl mx-auto mt-10">
+    <div class="max-w-7xl mx-auto mt-5">
         <h2 class="text-3xl font-bold text-gray-800 mb-8">Berita</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">

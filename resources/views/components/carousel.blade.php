@@ -30,7 +30,7 @@
 
 @endphp
 
-<div x-data="carousel()" x-init="start()" class="relative w-full h-screen overflow-hidden">
+<div x-data="carousel()" x-init="start()" class="relative w-full h-screen overflow-hidden touch-pan-y">
     <!-- Slides wrapper -->
     <div class="flex h-full"
          :class="{ 'transition-transform duration-700 ease-in-out': animated }"
